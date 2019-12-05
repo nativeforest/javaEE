@@ -18,17 +18,41 @@ public class LoginRegister extends HttpServlet {
    
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	   //// login from html login.jsp/////
+	   //// login from _html login.jsp/////
+		System.out.println("before");
 		StudentDAO sd = new StudentDAOImpl();
-		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
-		String submitType = request.getParameter("subtmit");
+		String userName = request.getParameter("login-userName");
+		String password = request.getParameter("login-password");
+		String submitType = request.getParameter("submit");
 		Student s = sd.getStudent(userName , password);
-		if(submitType.equals("login")) { 
+		System.out.println("after get s");
+		
+		if(submitType.equals("login") && s!=null && s.getName()!=null) {
 			
-		}else if (submitType.equals("register")){
+			request.setAttribute("homeMessage",s.getName());
+			request.getRequestDispatcher("student_home.jsp").forward(request, response);
+		
+		}else if ( submitType.equals("register") ){
 			
-		}else { request.setAttribute("message","s");}
+			String userNameR = request.getParameter("register-userName");
+			String passwordR = request.getParameter("register-password");
+			String nameR = request.getParameter("register-name");
+			String codeR = request.getParameter("register-code");
+			String emailR = request.getParameter("register-email");
+			
+			s.setCode(codeR);
+			s.setName(nameR);
+			s.setEmail(emailR);
+			s.setPassword(passwordR);
+			s.setUserName(userNameR);
+			request.setAttribute("registerSuccessMessage","_You hav been registered");
+			request.getRequestDispatcher("login.jsp").forward(request,response);
+			
+			
+		}else {  			
+			request.setAttribute("loginErrorMessage","_You are Not Registered yet,Click on Register");
+			request.getRequestDispatcher("login.jsp").forward(request,response);
+			}
 		
 	}
 
