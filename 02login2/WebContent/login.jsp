@@ -14,10 +14,12 @@
 	<div> ${registerSuccessMessage}</div>
 	<div> ${loginErrorMessage}</div>
 		<label>Login</label>
+		
 		<label>UserName:</label>
-		<input id="login-userName" name = "login-userName">
+		<input id="login-userName" name="login-userName">
 		<label>Password</label>
 		<input type="password" id="login-password" name = "login-password">
+		
 		<label><a href="register.jsp">Register</a></label>
 		<button type="submit" value="login" name="submit" >Submit</button>
 	</form>

@@ -1,6 +1,7 @@
 package controller;
 
 public class Student {
+	
     private String userName;
 	private String name;
 	private String email;

@@ -16,19 +16,22 @@ public class StudentDAOImpl implements StudentDAO {
 	
 		try {
 			con = MyConnectionProvider.getCon();
-			ps = con.prepareStatement("INSERT INTO STUDENT VALUES (?,?,?,?,?);");
+			ps = con.prepareStatement("INSERT INTO STUDENT VALUES (?,?,?,?,?) ");
 			//ps = con.prepareStatement("insert into register value(?,?,?,?,?)");
 			System.out.println("insert statement ready");
-			ps.setString(1, s.getUserName());  // userName
-			ps.setString(2, s.getName());      //Name
-			ps.setString(3, s.getEmail());     //Email
+			ps.setString(1, s.getName());  // userName
+			ps.setString(2, s.getPassword());  //Password
+			ps.setString(3,  s.getUserName());      //Name
 			ps.setString(4, s.getCode());         //Code
-			ps.setString(5, s.getPassword());  //Password
+			ps.setString(5, s.getEmail());     //Email
+	
 			
 			status= ps.executeUpdate();
+			System.out.println("status insert excute: "+status);
+			con.commit();
 			con.close();
 			
-		}catch(Exception e) {System.out.println(e);  System.out.println("errorsaso eninsertstudent");}
+		}catch(Exception e) {System.out.println(e);  System.out.println("errorsaso en insertstudent");}
 		
 		return 0;	
 	}
@@ -38,27 +41,31 @@ public class StudentDAOImpl implements StudentDAO {
 	public Student getStudent(String userName, String password) {
 		Student s = new Student();
 		try {
+			
 			con = MyConnectionProvider.getCon();
-			ps = con.prepareStatement("select * from STUDENT where username=? and password=?");
+			ps = con.prepareStatement("select * from STUDENT where username =? and password =?");
 			ps.setString(1, userName);
 			ps.setString(2, password);
+			System.out.println("--getStudent param- query--"); 
+			System.out.println(userName); 
+			System.out.println(password); 
 			
 			ResultSet rs = ps.executeQuery();
-			System.out.println(rs.next()); 
+			System.out.println("--get studenquery executed--"); 
 			while(rs.next()) {
 				System.out.println("rs next while"); 
-				s.setUserName(rs.getString(1));     //userName
-				
-				s.setName(rs.getString(2));        //name;
-				s.setEmail(rs.getString(3)); 	  //email;
+				s.setUserName(rs.getString("username"));     //userName3	
+				s.setName(rs.getString(1));        //name;
+				s.setEmail(rs.getString(5)); 	  //email;
 				s.setCode(rs.getString(4));         //code;
-				s.setPassword(rs.getString(5)); //password;
-			
-			}
+				s.setPassword(rs.getString("password")); //password;
+				
+				
+			} con.commit(); con.close(); System.out.println("--get studenquery clossesd--"); 
 			
 		}catch(Exception e) { System.out.println(e);   System.out.println("errorsaso getstudent");}
-		
 		return s;
+		
 		
 		
 	}

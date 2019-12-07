@@ -18,33 +18,39 @@ public class LoginRegister extends HttpServlet {
    
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	   //// login from _html login.jsp/////
-		System.out.println("before");
+	  
+		//// login from _html login.jsp/////
 		StudentDAO sd = new StudentDAOImpl();
-		String userName = request.getParameter("login-userName");
-		String password = request.getParameter("login-password");
+		String userName = request.getParameter("login-userName"); 
+		String password = request.getParameter("login-password"); 
 		String submitType = request.getParameter("submit");
-		Student s = sd.getStudent(userName , password);
-		System.out.println("after get s");
+		Student s = new Student();
+		 s = sd.getStudent(userName , password);
+		 
+		System.out.println("-----------------");
+		System.out.println(" s getna: "+s.getName()+" pass: "+s.getPassword());	
+		System.out.println("-----");
 		
 		if(submitType.equals("login") && s!=null && s.getName()!=null) {
-			
 			request.setAttribute("homeMessage",s.getName());
 			request.getRequestDispatcher("student_home.jsp").forward(request, response);
 		
 		}else if ( submitType.equals("register") ){
+			
+			s = new Student();
 			
 			String userNameR = request.getParameter("register-userName");
 			String passwordR = request.getParameter("register-password");
 			String nameR = request.getParameter("register-name");
 			String codeR = request.getParameter("register-code");
 			String emailR = request.getParameter("register-email");
-			
-			s.setCode(codeR);
-			s.setName(nameR);
-			s.setEmail(emailR);
-			s.setPassword(passwordR);
 			s.setUserName(userNameR);
+			s.setPassword(passwordR);
+			s.setName(nameR);
+			s.setCode(codeR);
+			s.setEmail(emailR);
+			sd.insertStudent(s);
+		
 			request.setAttribute("registerSuccessMessage","_You hav been registered");
 			request.getRequestDispatcher("login.jsp").forward(request,response);
 			

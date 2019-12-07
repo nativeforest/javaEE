@@ -13,10 +13,12 @@
 <label>{registerErrorMessage}</label>
 <label>Name:</label>
 <input type="text" name="register-name">
+<label>UserName:</label>
+<input type="text" name="register-userName">
 <label>Email:</label>
 <input type="email"name="register-email">
 <label>Code:</label>
-<input type="text" name="register-code-student">
+<input type="text" name="register-code">
 <label>Password:</label>
 <input type="password" name="register-password">
 <label>Repeat Password:</label>
