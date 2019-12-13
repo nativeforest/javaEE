@@ -27,9 +27,6 @@ public class LoginRegister extends HttpServlet {
 		Student s = new Student();
 		 s = sd.getStudent(userName , password);
 		 
-		System.out.println("-----------------");
-		System.out.println(" s getna: "+s.getName()+" pass: "+s.getPassword());	
-		System.out.println("-----");
 		
 		if(submitType.equals("login") && s!=null && s.getName()!=null) {
 			request.setAttribute("homeMessage",s.getName());
