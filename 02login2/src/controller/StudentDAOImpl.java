@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import model.MyConnectionProvider;
+import model.Student;
+import model.StudentDAO;
+
 
 
 public class StudentDAOImpl implements StudentDAO {

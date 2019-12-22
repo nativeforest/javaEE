@@ -4,14 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home Student</title>
+<title>STUDENT PROFILE</title>
 </head>
 <body>
 
-<h2>STUDENT HOME PAGE</h2>
-<div>  ${homeMessage} </div>
-<a href="LogoutServlet">Logout</a> |  
-<a href="ProfileServlet">Profile</a>  
-
+<h3>Profile student</h3>
 </body>
 </html>

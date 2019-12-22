@@ -10,7 +10,7 @@
 
 <div id="register-field" style="background-color:lightgreen;" >
 <form action="loginRegister" method="post" >
-<label>{registerErrorMessage}</label>
+<label>${registerErrorMessage}</label>
 <label>Name:</label>
 <input type="text" name="register-name">
 <label>UserName:</label>
