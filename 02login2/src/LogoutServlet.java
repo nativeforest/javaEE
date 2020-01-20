@@ -27,28 +27,32 @@ public class LogoutServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session=request.getSession(false);
-		if(session!=null){ 
+		
+		if(session != null){
+			
 			session.invalidate();
-		response.setContentType("text/html");  
-        PrintWriter out=response.getWriter(); 
-        out.close();  
-        
-		request.getRequestDispatcher("login.jsp").forward(request, response);
-		//HttpSession session=request.getSession();  
-        
-        out.print("You are successfully logged out! ->"+ session); }else {
-        	 request.getRequestDispatcher("login.jsp").include(request, response);		
-        	response.setContentType("text/html");  
+			response.setContentType("text/html");  
 	        PrintWriter out=response.getWriter(); 
-	        out.print("<h1>----</h1>");
-	        out.print("else logoutservlet u  are currently logout! ");
+	        out.close();  
 	        
-	        out.close();
-             
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+			//HttpSession session=request.getSession(); 
+            out.print("You are successfully logged out! ->"+ session);      
+        }else{
         	
-        } 
-		 request.getRequestDispatcher("login.jsp").include(request, response);	
+        	request.getRequestDispatcher("login.jsp").include(request, response);		
+            response.setContentType("text/html");  
+    	    PrintWriter out=response.getWriter(); 
+    	    out.print("<h1>----</h1>");
+    	    out.print("else logoutservlet u  are currently logout! ");
+    	        
+    	    out.close();
+	
+        }
+		
+		request.getRequestDispatcher("login.jsp").include(request, response);	
         
        
         
