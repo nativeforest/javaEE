@@ -1,15 +1,22 @@
 package com.labsierra.model;
 import java.util.ArrayList;
 import java.util.List;
+             /*CustomerDao*/
 public class CustomerService {
+	/*private Connection con = null;
+	private Statement stmt = null;
+	private ResultSet rs = null; */
+
+	
 	
 
 	public List<Customer> getAllCustomer(){
 		List<Customer> customerList = new ArrayList<>();
-		// connec stm 
-		//todo sql query
+		/*		con = ConnectionManager.getConnection();
+		stmt = con.createStatement();
+		rs = stmt.executeQuery(sql); */
 		// while(rs.next) retriving data
-		customerList.add(new Customer("andres","29","globulos rojos") );
+		customerList.add(new Customer("andres","29","globulos rojos") ); /*sql soon*/
 		customerList.add(new Customer("brenda","22","frotis garganta") );
 		customerList.add(new Customer("patricia","29","plaquetas") );
 		customerList.add(new Customer("raul","56","hiper tension") );
@@ -17,14 +24,26 @@ public class CustomerService {
 		
 	}
 	
-	public Boolean userLoginValidate(String user,String password) {
+	public Boolean userLoginValidate(String user,String password) { /*or (Student student)*/
 		
 		if(user=="andres" & password=="andres") {
 			return true;
 		}else return false;
 	}
 	
-//	public static void viewTable(Connection con, String dbName)
+	public int deleteCustomer(String id) {
+		
+		return 0;  // if getit or doesnt exist 1
+		
+	}
+public Customer getCustomer(int id) {
+	
+	Customer customer = new Customer("jason Becker","38","ALS"); /* sql query soon*/	
+		return customer; /* return some customer*/
+		
+	} 
+	
+//	public static void viewTable(Connection con, String dbName)   //another way
 //		    throws SQLException {
 //
 //		    Statement stmt = null;
