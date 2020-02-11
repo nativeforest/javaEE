@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import model.MyConnectionProvider;
+import model.Student;
+import model.StudentDAO;
+
 
 
 public class StudentDAOImpl implements StudentDAO {
@@ -24,7 +28,7 @@ public class StudentDAOImpl implements StudentDAO {
 		
 			ps.setString(1, s.getName());  // userName
 			ps.setString(2, s.getPassword());  //Password
-			ps.setString(3,  s.getUserName());      //Name
+			ps.setString(3, s.getUserName());      //Name
 			ps.setString(4, s.getCode());         //Code
 			ps.setString(5, s.getEmail());     //Email
 			status= ps.executeUpdate();

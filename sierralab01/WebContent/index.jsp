@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home Student</title>
+<title>Insert title here</title>
 </head>
 <body>
-
-<h2>STUDENT HOME PAGE</h2>
-<div>  ${homeMessage} </div>
-<a href="LogoutServlet">Logout</a> |  
-<a href="ProfileServlet">Profile</a>  
-
+<h1>INDEX PAGE</h1>
 </body>
 </html>
