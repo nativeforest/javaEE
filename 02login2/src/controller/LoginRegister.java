@@ -25,7 +25,7 @@ public class LoginRegister extends HttpServlet {
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  
-		//// login from _html login.jsp/////
+		/* login from _html login.jsp*/
 		StudentDAO sd = new StudentDAOImpl();
 		String userName = request.getParameter("login-userName"); 
 		String password = request.getParameter("login-password"); 
@@ -33,7 +33,7 @@ public class LoginRegister extends HttpServlet {
 		Student s = new Student();
 		 s = sd.getStudent(userName , password);
 		 
-		///Login submit selected///
+		/*Login submit selected */
 		if(submitType.equals("login") && s!=null && s.getName()!=null) {
 			
 			
@@ -43,11 +43,8 @@ public class LoginRegister extends HttpServlet {
 			 
 			request.getRequestDispatcher("studentHome").forward(request, response);
 			
-			      
-	
-		
 		   } 
-	       //Register submit selected///  
+	       /*Register submit selected*/  
 		   else if ( submitType.equals("register") ){
 			
 			s = new Student();
@@ -63,11 +60,11 @@ public class LoginRegister extends HttpServlet {
 			s.setCode(codeR);
 			s.setEmail(emailR);
 			sd.insertStudent(s);
-		///The servlet container will check the Cookie header of every incoming HTTP request
+		/*The servlet container will check the Cookie header of every incoming HTTP request*/
 			request.setAttribute("registerSuccessMessage","_You hav been registered");
 			request.getRequestDispatcher("login.jsp").forward(request,response);
 			
-			/// login user does not exist ///
+			/* in login, user does not exist */
 		}else {  			
 			request.setAttribute("loginErrorMessage","fail password/user or _You are Not Registered yet,Click on Register");
 			request.getRequestDispatcher("login.jsp").forward(request,response);

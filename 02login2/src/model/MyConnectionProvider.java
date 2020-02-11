@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 
 
 public class MyConnectionProvider implements MyProvider {
+	static Connection con=null;
 	
 	public static Connection getCon() {
 		
@@ -26,5 +27,5 @@ public class MyConnectionProvider implements MyProvider {
 		return con;
 	   }
 	
-	static Connection con=null;
+	
 }
